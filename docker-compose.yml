@@ -3,3 +3,11 @@ services:
     build: .
     ports:
       - 80:80
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongodb/mongodb-community-server:7.0.11-ubi8
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root #TODO : remove from docker-compose file
+      - MONGO_INITDB_ROOT_PASSWORD=password #TODO : remove from docker-compose file
