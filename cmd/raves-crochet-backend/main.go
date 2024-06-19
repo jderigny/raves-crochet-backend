@@ -4,11 +4,15 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/jderigny/raves-crochet-backend/internal/db"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
+
+	mongoClient, mongoContext, mongoContextCancel := db.OpenConnection()
+	defer db.CloseConnection(mongoClient, mongoContext, mongoContextCancel)
 
 	e := echo.New()
 
