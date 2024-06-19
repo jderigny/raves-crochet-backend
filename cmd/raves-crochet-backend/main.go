@@ -11,8 +11,7 @@ import (
 
 func main() {
 
-	mongoClient, mongoContext, mongoContextCancel := db.OpenConnection()
-	defer db.CloseConnection(mongoClient, mongoContext, mongoContextCancel)
+	db.OpenConnection()
 
 	e := echo.New()
 
